@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-
+   
 // Sets up the Express App
 
 const app = express();
@@ -20,15 +20,18 @@ const waitList =[];
 
 // route for main landing page
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+// route to view tables data
 app.get('/tables', (req, res) => res.sendFile(path.join(__dirname, 'tables.html')));
+// route to view api version of tables.
 app.get('/api/tables', (req, res) => res.json(tables));
+// route to view API version of waitlist.
 app.get('/api/waitlist', (req, res) => res.json(waitList));
-// app.get('/about');
 
-// Create New Characters - takes in JSON input
+// Create new reservation, takes in data from reservation webpage
 app.post('/reserve', (req, res) => {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
+//   if function to send anybody over 6 reservations to the waitlist.
   const newReservation = req.body;
   console.log(newReservation);
     if (tables.length < 6) {
