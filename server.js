@@ -26,9 +26,11 @@ app.get('/tables', (req, res) => res.sendFile(path.join(__dirname, 'tables.html'
 app.get('/api/tables', (req, res) => res.json(tables));
 // route to view API version of waitlist.
 app.get('/api/waitlist', (req, res) => res.json(waitList));
+// route to view reservation page
+app.get('/reserve', (req, res) => res.sendFile(path.join(__dirname, 'reserve.html')))
 
 // Create new reservation, takes in data from reservation webpage
-app.post('/reserve', (req, res) => {
+app.post('/reserve/api/tables', (req, res) => {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
 //   if function to send anybody over 6 reservations to the waitlist.
