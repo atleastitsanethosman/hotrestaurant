@@ -36,7 +36,7 @@ app.post('/api/tables', (req, res) => {
 //   if function to send anybody over 6 reservations to the waitlist.
   const newReservation = req.body;
   console.log(newReservation);
-    if (tables.length < 6) {
+    if (tables.length < 5) {
         tables.push(newReservation)
         res.send(true)
     } else {
@@ -46,8 +46,8 @@ app.post('/api/tables', (req, res) => {
     });
 
 app.post('/api/clear', (req, res) => {
-    tables = [];
-    waitList = [];
+    tables.length = 0;
+    waitList.length = 0;
 })
 
 // Starts the server to begin listening
