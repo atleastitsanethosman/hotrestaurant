@@ -33,8 +33,10 @@ app.post('/reserve', (req, res) => {
   console.log(newReservation);
     if (tables.length < 6) {
         tables.push(newReservation)
+        res.send(true)
     } else {
         waitList.push(newReservation)
+        res.send(false)
         };
     });
 
